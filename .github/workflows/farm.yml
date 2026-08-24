@@ -1,0 +1,14 @@
+name: farm-push
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 推送到 Bark
+        run: |
+          curl -s "https://api.day.app/${{ secrets.BARK_KEY }}/农场打卡/宝宝我来看你啦"
